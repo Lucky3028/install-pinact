@@ -1,4 +1,4 @@
-name: Run action
+name: Run action with latest version
 on:
   push:
 jobs:
