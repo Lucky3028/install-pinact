@@ -18,7 +18,7 @@ An action to install [suzuki-shunsuke/pinact](https://github.com/suzuki-shunsuke
 
 ### Outputs
 
-- None
+None
 
 ## License
 
