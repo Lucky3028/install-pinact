@@ -1,0 +1,15 @@
+name: Run action with latest version
+on:
+  push:
+jobs:
+  runner:
+    name: Run install-pinact
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run action
+        uses: ./
+      - name: Run pinact
+        run: |
+          pinact --version
+

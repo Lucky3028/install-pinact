@@ -1,0 +1,46 @@
+name: install pinact
+description: An action to install pinact.
+author: Lucky3028
+inputs:
+  version:
+    description: The version of pinact to install. (ref. 1.1.0) If not provided, use the latest.
+    required: false
+runs:
+  using: composite
+  steps:
+    - name: Check version
+      shell: bash
+      id: ver
+      run: |
+        if [ -z "${TOOL_VER}" ]; then
+          TOOL_VER=$(
+            gh release list --repo suzuki-shunsuke/pinact \
+              --json 'tagName,isPrerelease,publishedAt' \
+              --jq '[.[] | select(.isPrerelease | not)] | sort_by(.publishedAt)[-1].tagName'
+          )
+        fi
+        VER="${TOOL_VER#v}"
+        echo "VER=${VER}" >> "${GITHUB_OUTPUT}"
+        echo "${VER}"
+      env:
+        TOOL_VER: ${{ inputs.version }}
+        GH_TOKEN: ${{ github.token }}
+    - name: Download pinact
+      shell: bash
+      run: |
+        gh release download "v${TOOL_VER}" \
+          --repo suzuki-shunsuke/pinact \
+          --pattern 'pinact_linux_amd64.tar.gz' \
+          --output '/tmp/pinact.tar.gz'
+      env:
+        TOOL_VER: ${{ steps.ver.outputs.VER }}
+        GH_TOKEN: ${{ github.token }}
+    - name: Install pinact
+      shell: bash
+      working-directory: /tmp
+      run: |
+        mkdir dist
+        tar -xvf pinact.tar.gz -C ./dist/
+        sudo mv ./dist/pinact /usr/local/bin
+        rm -rf ./dist pinact.tar.gz
+
