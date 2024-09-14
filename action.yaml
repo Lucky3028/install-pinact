@@ -35,7 +35,7 @@ runs:
     - name: Install pinact
       shell: bash
       working-directory: /tmp
-      runs: |
+      run: |
         mkdir dist
         tar -xvf pinact.tar.gz -C ./dist/
         sudo mv ./dist/pinact /usr/local/bin
