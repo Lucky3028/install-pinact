@@ -12,7 +12,7 @@ An action to install [suzuki-shunsuke/pinact](https://github.com/suzuki-shunsuke
 
 ### Inputs
 
-|_.name|_.description|_.required|
+|name|description|required|
 |---|---|---|
 |version|The version of pinact to install. (ref. 1.1.0) If not provided, use the latest.|⬜|
 
