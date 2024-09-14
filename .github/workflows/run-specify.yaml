@@ -2,6 +2,7 @@ name: Run action with provided version
 on:
   push:
 permissions: {}
+timeout-minutes: 3
 jobs:
   runner:
     name: Run install-pinact
