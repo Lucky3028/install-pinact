@@ -1,6 +1,6 @@
 name: Run action with provided version
 on:
-  push:
+  pull_request:
 permissions: {}
 timeout-minutes: 3
 jobs:
