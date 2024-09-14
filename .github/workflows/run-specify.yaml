@@ -1,6 +1,7 @@
 name: Run action with provided version
 on:
   push:
+permissions: {}
 jobs:
   runner:
     name: Run install-pinact
