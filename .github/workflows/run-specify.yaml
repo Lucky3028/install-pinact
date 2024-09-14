@@ -12,6 +12,6 @@ jobs:
         with:
           version: 0.2.1
       - name: Run pinact
-        runs: |
+        run: |
           pinact --version
 

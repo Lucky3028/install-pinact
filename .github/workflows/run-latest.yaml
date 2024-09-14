@@ -10,6 +10,6 @@ jobs:
       - name: Run action
         uses: ./
       - name: Run pinact
-        runs: |
+        run: |
           pinact --version
 
