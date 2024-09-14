@@ -23,6 +23,7 @@ runs:
         echo "${TOOL_VER}"
       env:
         TOOL_VER: ${{ inputs.version }}
+        GH_TOKEN: ${{ github.token }}
     - name: Download pinact
       shell: bash
       run: |
@@ -32,6 +33,7 @@ runs:
           --output '/tmp/pinact.tar.gz'
       env:
         TOOL_VER: ${{ steps.ver.outputs.VER }}
+        GH_TOKEN: ${{ github.token }}
     - name: Install pinact
       shell: bash
       working-directory: /tmp
