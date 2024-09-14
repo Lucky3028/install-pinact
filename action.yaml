@@ -43,4 +43,7 @@ runs:
         tar -xvf pinact.tar.gz -C ./dist/
         sudo mv ./dist/pinact /usr/local/bin
         rm -rf ./dist pinact.tar.gz
+branding:
+  color: green
+  icon: plus-square
 
