@@ -19,8 +19,9 @@ runs:
               --jq '[.[] | select(.isPrerelease | not)] | sort_by(.publishedAt)[-1].tagName'
           )
         fi
-        echo "VER=${TOOL_VER#v}" >> "${GITHUB_OUTPUT}"
-        echo "${TOOL_VER}"
+        VER="${TOOL_VER#v}"
+        echo "VER=${VER}" >> "${GITHUB_OUTPUT}"
+        echo "${VER}"
       env:
         TOOL_VER: ${{ inputs.version }}
         GH_TOKEN: ${{ github.token }}
