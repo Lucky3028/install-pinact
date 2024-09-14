@@ -1,6 +1,9 @@
 name: Run action with latest version
 on:
   pull_request:
+  push:
+    branches:
+      - main
 permissions: {}
 jobs:
   runner:
